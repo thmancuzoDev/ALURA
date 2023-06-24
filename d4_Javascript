@@ -1,0 +1,28 @@
+// Gerador de número aleatório entre 0 e 10  |  Generate a random number between 0 and 10
+const numeroAleatorio = Math.floor(Math.random() * 11);
+
+// Define o número de chances  |  Initialize the number of chances
+let chances = 3;
+
+// Função para iniciar o jogo  |  Function to start the game
+function startGame() {
+  // Jogador insere seu palpite  |  Prompt the player for a guess
+  const palpite = parseInt(prompt("Adivinhe um número entre 0 e 10, você tem 3 tentativas:  |  Guess a number between 0 and 10, you have 3 chances:"));
+
+  // Verifica se o palpite é correto  |  Check if the guess is correct
+  if (palpite === numeroAleatorio) {
+    alert("Parabéns! Seu palpite estava correto.  |  Congratulations! You guessed the correct number.");
+  } else {
+    chances--;
+
+    if (chances > 0) {
+      alert(`Tentativa errada! Chances restantes: ${chances}  |   Wrong guess! Try again. Chances remaining: ${chances}`);
+      startGame(); // Chamada de retorno ao jogo  |  Recursive call to continue the game
+    } else {
+      alert(`Fim de jogo, a resposta correta era ${numeroAleatorio}.  |   You ran out of chances. The correct number was ${numeroAleatorio}. Game over.`);
+    }
+  }
+}
+
+// Inicía o jogo  |  Start the game
+startGame();
